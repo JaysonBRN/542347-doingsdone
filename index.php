@@ -1,4 +1,6 @@
 <?php
+// Подключаем пользовательские функции
+require_once 'functions.php';
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
 // Массив категорий для задания
@@ -92,7 +94,7 @@ $tasks = [
                         while ($index < $num): ?>
                         <li class="main-navigation__list-item--active">
                             <a class="main-navigation__list-item-link" href="<?=$index; ?>"><?=$categories[$index]; ?></a>
-                            <span class="main-navigation__list-item-count">1</span>
+                            <span class="main-navigation__list-item-count"><?= taskCounts($tasks, $categories[$index]); ?></span>
                         </li>
                         <?php $index = $index + 1;
                         endwhile; ?>
