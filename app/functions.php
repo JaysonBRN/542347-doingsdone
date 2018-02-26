@@ -18,3 +18,19 @@ function taskCounts($tasks, $projectName) {
     }
     return $count;
 }
+
+/**
+ * Подключаем шаблон
+ * @param string $waytofile
+ * @param array $arrayfile
+ * @return null/string
+ */
+function include_template($waytofile, $arrayfile) {
+    if (file_exists($waytofile)) {
+        ob_start();
+        extract($arrayfile);
+        include ($waytofile);
+        return ob_get_clean();
+    }
+    return '';
+}
